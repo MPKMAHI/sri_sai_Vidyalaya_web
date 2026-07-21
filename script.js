@@ -30,46 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
 
     // ==========================================
-    // 2. Custom Cursor tracking with lag
-    // ==========================================
-    const cursor = document.getElementById('customCursor');
-    const cursorDot = document.getElementById('customCursorDot');
-    
-    if (cursor && cursorDot) {
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Immediate position for the tiny dot
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-        });
-        
-        // Lagged animation loop for the outer circle
-        const animateCursor = () => {
-            const delay = 8; // Higher = slower lag
-            cursorX += (mouseX - cursorX) / delay;
-            cursorY += (mouseY - cursorY) / delay;
-            
-            cursor.style.left = `${cursorX}px`;
-            cursor.style.top = `${cursorY}px`;
-            
-            requestAnimationFrame(animateCursor);
-        };
-        animateCursor();
-        
-        // Detect hover elements to scale cursor
-        const hoverables = document.querySelectorAll('a, button, input, select, textarea, .gallery-item, .facility-card, .faq-question');
-        hoverables.forEach(item => {
-            item.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            item.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
-    }
-
-    // ==========================================
     // 3. Theme Switcher (Dark/Light mode)
     // ==========================================
     const themeToggle = document.getElementById('themeToggle');
