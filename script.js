@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SRI SAI VIDHYALAYA HIGH SCHOOL - SCRIPT
+   SRI SAI Vidyalaya HIGH SCHOOL - SCRIPT
    Interactivity, Animations, Countdowns, and Validations
    ========================================================================== */
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const schoolNameEl = document.getElementById('typingSchoolName');
     if (schoolNameEl) {
-        const textToType = "Sri Sai Vidhyalaya High School";
+        const textToType = "Sri Sai Vidyalaya High School";
         let index = 0;
         
         const typeEffect = () => {
