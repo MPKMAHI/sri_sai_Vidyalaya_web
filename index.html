@@ -193,23 +193,38 @@
         </section>
 
         <!-- Stats Counter Section -->
-        <section class="stats section-padding section-bg">
+        <section class="stats section-padding" id="statsSection">
             <div class="container">
                 <div class="stats-container">
-                    <div class="stats-item reveal-zoom">
-                        <div class="stats-number" data-target="2500">0</div>
+                    <div class="stats-item glass-card reveal-zoom">
+                        <div class="stats-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                        </div>
+                        <div class="stats-number" data-target="12000">0</div>
                         <p class="stats-label">Enrolled Students</p>
                     </div>
-                    <div class="stats-item reveal-zoom">
-                        <div class="stats-number" data-target="150">0</div>
+
+                    <div class="stats-item glass-card reveal-zoom">
+                        <div class="stats-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="stats-number" data-target="100">0</div>
                         <p class="stats-label">Qualified Teachers</p>
                     </div>
-                    <div class="stats-item reveal-zoom">
-                        <div class="stats-number" data-target="98">0</div>
+
+                    <div class="stats-item glass-card reveal-zoom">
+                        <div class="stats-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <div class="stats-number stats-percent" data-target="100">0</div>
                         <p class="stats-label">Pass Percentage (%)</p>
                     </div>
-                    <div class="stats-item reveal-zoom">
-                        <div class="stats-number" data-target="45">0</div>
+
+                    <div class="stats-item glass-card reveal-zoom">
+                        <div class="stats-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="stats-number" data-target="20">0</div>
                         <p class="stats-label">National Awards</p>
                     </div>
                 </div>
@@ -378,13 +393,13 @@
                     </div>
                     <div class="faculty-card glass-card reveal-slide-up">
                         <div class="faculty-img-container">
-                            <img src="./images/teacher4.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';" alt="Marcus Aurelius" class="faculty-img">
+                            <img src="./images/teacher4.png" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';" alt="Mr. Ramana" class="faculty-img">
                         </div>
-                        <h4>Mr. Marcus Aurelius</h4>
-                        <span class="faculty-subject">History & Civics</span>
+                        <h4>Mr. Ramana</h4>
+                        <span class="faculty-subject">Head of English Department</span>
                         <div class="faculty-qualifications">
-                            <p><strong>Qual:</strong> M.A. in World History</p>
-                            <p><strong>Exp:</strong> 8+ Years</p>
+                            <p><strong>Qual:</strong> M.A. in English, B.Ed.</p>
+                            <p><strong>Exp:</strong> 10+ Years</p>
                         </div>
                     </div>
                     <div class="faculty-card glass-card reveal-slide-up">
@@ -651,7 +666,7 @@
                 </div>
 
                 <div class="admissions-form-wrapper glass-card">
-                    <form id="admissionForm" novalidate>
+                    <form id="admissionForm" action="https://formspree.io/f/bharathi1990bharathi1990@gmail.com" method="POST" novalidate>
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="studentName">Student Full Name *</label>
@@ -705,8 +720,12 @@
                     <div class="form-success-alert glass-card" id="formSuccessAlert" role="alert" hidden>
                         <div class="success-icon">&checkmark;</div>
                         <h3>Application Submitted Successfully!</h3>
-                        <p>Thank you for choosing Sri Sai Vidyalaya High School. Our admission counselor will review your application and contact you on the registered mobile number within 24 hours.</p>
-                        <button class="btn btn-primary" id="closeSuccessBtn">OK</button>
+                        <p>Your admission application details have been dispatched to <strong>bharathi1990bharathi1990@gmail.com</strong> and WhatsApp <strong>+91 9030284431</strong>.</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+                            <a id="admissionWaBtn" href="https://wa.me/919030284431" target="_blank" class="btn btn-primary" style="background:#25D366; border-color:#25D366;">💬 Send via WhatsApp</a>
+                            <a id="admissionMailBtn" href="mailto:bharathi1990bharathi1990@gmail.com" class="btn btn-secondary">✉️ Send via Email</a>
+                        </div>
+                        <button class="btn btn-primary" id="closeSuccessBtn" style="margin-top: 15px;">Close</button>
                     </div>
                 </div>
             </div>
@@ -737,9 +756,9 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                             </div>
                             <div class="info-text">
-                                <h4>Phone Support</h4>
-                                <p>Reception: +91 11 2548 9600</p>
-                                <p>Admissions Helpline: +91 99999 55500</p>
+                                <h4>Phone / WhatsApp Helpline</h4>
+                                <p>Helpline: <a href="tel:9030284431" style="color:inherit; font-weight:600;">+91 9030284431</a></p>
+                                <p>WhatsApp: <a href="https://wa.me/919030284431" target="_blank" style="color:var(--primary); font-weight:600;">Chat on WhatsApp &rarr;</a></p>
                             </div>
                         </div>
 
@@ -749,8 +768,7 @@
                             </div>
                             <div class="info-text">
                                 <h4>Email Enquiries</h4>
-                                <p>Admissions: admissions@srisaividyalaya.edu.in</p>
-                                <p>Office Desk: info@srisaividyalaya.edu.in</p>
+                                <p>Email: <a href="mailto:bharathi1990bharathi1990@gmail.com" style="color:inherit; font-weight:600;">bharathi1990bharathi1990@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -758,7 +776,7 @@
                     <div class="contact-actions reveal-right">
                         <div class="contact-form-panel glass-card">
                             <h3>Send a Quick Inquiry</h3>
-                            <form id="contactForm" novalidate>
+                            <form id="contactForm" action="https://formspree.io/f/bharathi1990bharathi1990@gmail.com" method="POST" novalidate>
                                 <div class="form-group">
                                     <label for="contactName">Name *</label>
                                     <input type="text" id="contactName" name="contactName" placeholder="Enter your full name" required>
@@ -781,6 +799,17 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary ripple-btn" id="submitContact">Send Message</button>
                             </form>
+
+                            <div class="form-success-alert glass-card" id="contactSuccessAlert" role="alert" hidden>
+                                <div class="success-icon">&checkmark;</div>
+                                <h3>Inquiry Sent Successfully!</h3>
+                                <p>Your inquiry details have been dispatched to <strong>bharathi1990bharathi1990@gmail.com</strong> and WhatsApp <strong>+91 9030284431</strong>.</p>
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 15px;">
+                                    <a id="contactWaBtn" href="https://wa.me/919030284431" target="_blank" class="btn btn-primary" style="background:#25D366; border-color:#25D366;">💬 Send via WhatsApp</a>
+                                    <a id="contactMailBtn" href="mailto:bharathi1990bharathi1990@gmail.com" class="btn btn-secondary">✉️ Send via Email</a>
+                                </div>
+                                <button class="btn btn-primary" id="closeContactSuccessBtn" style="margin-top: 15px;">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -797,6 +826,16 @@
                     <span class="logo-title">Sri Sai Vidyalaya</span>
                 </a>
                 <p class="footer-desc">Sri Sai Vidyalaya High School (SSVHS) is dedicated to nurturing academic brilliance, ethical strength, and social leadership. We prepare students for international success.</p>
+                <div class="footer-social-buttons">
+                    <a href="https://www.youtube.com/@SRISAIVIDYALAYAHIGHSCHOOLRJPT" target="_blank" rel="noopener noreferrer" class="social-badge youtube-badge" aria-label="YouTube Channel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span>YouTube</span>
+                    </a>
+                    <a href="https://www.instagram.com/srisaividyalayaschoolrjpt/" target="_blank" rel="noopener noreferrer" class="social-badge insta-badge" aria-label="Instagram Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>Instagram</span>
+                    </a>
+                </div>
             </div>
 
             <div class="footer-col reveal-fade">
@@ -819,11 +858,34 @@
                     <li><a href="#faq">FAQ Section</a></li>
                 </ul>
             </div>
+
+            <div class="footer-col reveal-fade">
+                <h4>Follow Our Socials</h4>
+                <p style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">Stay updated with official events, celebrations & announcements:</p>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="https://www.youtube.com/@SRISAIVIDYALAYAHIGHSCHOOLRJPT" target="_blank" rel="noopener noreferrer" class="btn btn-youtube" style="display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #FF0000; color: #ffffff; padding: 12px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        <span>Subscribe on YouTube</span>
+                    </a>
+                    <a href="https://www.instagram.com/srisaividyalayaschoolrjpt/" target="_blank" rel="noopener noreferrer" class="btn btn-insta" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #ffffff; padding: 12px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>Follow on Instagram</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="footer-bottom">
             <div class="container footer-bottom-flex">
                 <p>&copy; 2026 Sri Sai Vidyalaya High School. All Rights Reserved.</p>
+                <div class="footer-bottom-socials" style="display: flex; gap: 16px; align-items: center;">
+                    <a href="https://www.youtube.com/@SRISAIVIDYALAYAHIGHSCHOOLRJPT" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; transition: color 0.3s ease;" aria-label="YouTube Channel">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/srisaividyalayaschoolrjpt/" target="_blank" rel="noopener noreferrer" style="color: #94a3b8; transition: color 0.3s ease;" aria-label="Instagram Profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>

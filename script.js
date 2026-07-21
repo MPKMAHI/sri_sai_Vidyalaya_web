@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // 8. Statistics Counter animation
     // ==========================================
-    const statNumbers = document.querySelectorAll('.stat-number');
-    const statsSection = document.getElementById('statsSection');
+    const statNumbers = document.querySelectorAll('.stat-number, .stats-number');
+    const statsSection = document.getElementById('statsSection') || document.querySelector('.stats');
     
     if (statNumbers.length > 0 && statsSection) {
         let animated = false;
@@ -677,77 +677,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearError('studentName');
             }
 
-            // 2. Father Name validation
-            const fatherName = document.getElementById('fatherName').value.trim();
-            if (!fatherName) {
-                displayError('fatherName', "Father's Name is required.");
-                isValid = false;
-            } else if (fatherName.length < 3) {
-                displayError('fatherName', 'Name must be at least 3 characters.');
-                isValid = false;
-            } else {
-                clearError('fatherName');
-            }
-
-            // 3. Mother Name validation
-            const motherName = document.getElementById('motherName').value.trim();
-            if (!motherName) {
-                displayError('motherName', "Mother's Name is required.");
-                isValid = false;
-            } else if (motherName.length < 3) {
-                displayError('motherName', 'Name must be at least 3 characters.');
-                isValid = false;
-            } else {
-                clearError('motherName');
-            }
-
-            // 4. Gender selection validation
-            const gender = document.getElementById('gender').value;
-            if (!gender) {
-                displayError('gender', 'Please select a gender.');
-                isValid = false;
-            } else {
-                clearError('gender');
-            }
-
-            // 5. Date of Birth validation
+            // 2. Date of Birth validation
             const dob = document.getElementById('dob').value;
             if (!dob) {
                 displayError('dob', 'Date of Birth is required.');
                 isValid = false;
             } else {
-                const birthYear = new Date(dob).getFullYear();
-                const currentYear = new Date().getFullYear();
-                if (birthYear > currentYear - 2) {
-                    displayError('dob', 'Student must be at least 2 years old.');
-                    isValid = false;
-                } else {
-                    clearError('dob');
-                }
+                clearError('dob');
             }
 
-            // 6. Class selection validation
-            const classApplying = document.getElementById('classApplying').value;
-            if (!classApplying) {
-                displayError('classApplying', 'Please select class applying for.');
+            // 3. Parent Name validation
+            const parentName = document.getElementById('parentName').value.trim();
+            if (!parentName) {
+                displayError('parentName', "Parent / Guardian Name is required.");
+                isValid = false;
+            } else if (parentName.length < 3) {
+                displayError('parentName', 'Name must be at least 3 characters.');
                 isValid = false;
             } else {
-                clearError('classApplying');
+                clearError('parentName');
             }
 
-            // 7. Mobile Number validation
-            const mobileNumber = document.getElementById('mobileNumber').value.trim();
-            if (!mobileNumber) {
-                displayError('mobileNumber', 'Mobile Number is required.');
-                isValid = false;
-            } else if (!phonePattern.test(mobileNumber)) {
-                displayError('mobileNumber', 'Please enter a valid 10-digit number.');
-                isValid = false;
-            } else {
-                clearError('mobileNumber');
-            }
-
-            // 8. Email validation
+            // 4. Email validation
             const email = document.getElementById('email').value.trim();
             if (!email) {
                 displayError('email', 'Email Address is required.');
@@ -759,24 +710,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearError('email');
             }
 
-            // 9. Address validation
-            const address = document.getElementById('address').value.trim();
-            if (!address) {
-                displayError('address', 'Residential Address is required.');
+            // 5. Mobile Number validation
+            const mobile = document.getElementById('mobile').value.trim();
+            if (!mobile) {
+                displayError('mobile', 'Mobile Number is required.');
                 isValid = false;
-            } else if (address.length < 10) {
-                displayError('address', 'Please enter complete address details.');
+            } else if (!phonePattern.test(mobile)) {
+                displayError('mobile', 'Please enter a valid 10-digit number.');
                 isValid = false;
             } else {
-                clearError('address');
+                clearError('mobile');
             }
 
-            // Trigger success displays
-            if (isValid && successAlert) {
-                successAlert.removeAttribute('hidden');
-                successAlert.style.display = 'block';
-                admissionForm.style.opacity = '0.2';
-                admissionForm.style.pointerEvents = 'none';
+            // 6. Class Applying validation
+            const classApplying = document.getElementById('classApplying').value;
+            if (!classApplying) {
+                displayError('classApplying', 'Please select class applying for.');
+                isValid = false;
+            } else {
+                clearError('classApplying');
+            }
+
+            // Dispatch submission if valid
+            if (isValid) {
+                const formData = {
+                    schoolName: "Sri Sai Vidyalaya High School",
+                    type: "New Admission Registration (2026-27)",
+                    studentName: studentName,
+                    dob: dob,
+                    parentName: parentName,
+                    email: email,
+                    mobile: mobile,
+                    classApplying: classApplying,
+                    recipientEmail: "bharathi1990bharathi1990@gmail.com",
+                    recipientMobile: "9030284431"
+                };
+
+                // 1. Asynchronous Email Dispatch via Formspree API
+                fetch('https://formspree.io/f/bharathi1990bharathi1990@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(formData)
+                }).catch(err => console.log('Email dispatch notification:', err));
+
+                // 2. Open WhatsApp Direct Message to 9030284431
+                const waMessage = `🎓 *NEW ADMISSION APPLICATION - Sri Sai Vidyalaya High School*\n` +
+                    `----------------------------------\n` +
+                    `👤 *Student Name:* ${studentName}\n` +
+                    `📅 *Date of Birth:* ${dob}\n` +
+                    `👨‍👩‍👧 *Parent/Guardian:* ${parentName}\n` +
+                    `📧 *Email:* ${email}\n` +
+                    `📞 *Mobile:* ${mobile}\n` +
+                    `🏫 *Class Applying For:* ${classApplying}`;
+
+                const waUrl = `https://wa.me/919030284431?text=${encodeURIComponent(waMessage)}`;
+                
+                // 3. Dynamic mailto link for direct email client opening
+                const mailSubject = `New Admission Application: ${studentName} (${classApplying})`;
+                const mailBody = `New Admission Application - Sri Sai Vidyalaya High School\n\n` +
+                    `Student Name: ${studentName}\nDate of Birth: ${dob}\nParent Name: ${parentName}\n` +
+                    `Email: ${email}\nMobile: ${mobile}\nClass Applying For: ${classApplying}\n`;
+                const mailUrl = `mailto:bharathi1990bharathi1990@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+                const admissionWaBtn = document.getElementById('admissionWaBtn');
+                const admissionMailBtn = document.getElementById('admissionMailBtn');
+                if (admissionWaBtn) admissionWaBtn.href = waUrl;
+                if (admissionMailBtn) admissionMailBtn.href = mailUrl;
+
+                // Open WhatsApp & Mailto
+                window.open(waUrl, '_blank');
+                window.open(mailUrl, '_self');
+
+                // 4. Show Success Alert Modal
+                if (successAlert) {
+                    successAlert.removeAttribute('hidden');
+                    successAlert.style.display = 'block';
+                    admissionForm.style.opacity = '0.2';
+                    admissionForm.style.pointerEvents = 'none';
+                }
             }
         });
 
@@ -792,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 16. Contact Form Validation
+    // 16. Contact Form Validation & Dispatch
     // ==========================================
     const contactForm = document.getElementById('contactForm');
     const contactSuccessAlert = document.getElementById('contactSuccessAlert');
@@ -841,11 +852,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearError('contactMessage');
             }
 
-            if (isValid && contactSuccessAlert) {
-                contactSuccessAlert.removeAttribute('hidden');
-                contactSuccessAlert.style.display = 'block';
-                contactForm.style.opacity = '0.2';
-                contactForm.style.pointerEvents = 'none';
+            if (isValid) {
+                const contactData = {
+                    schoolName: "Sri Sai Vidyalaya High School",
+                    type: "Quick Inquiry",
+                    name: name,
+                    email: email,
+                    mobile: mobile,
+                    message: message,
+                    recipientEmail: "bharathi1990bharathi1990@gmail.com",
+                    recipientMobile: "9030284431"
+                };
+
+                // 1. Asynchronous Email Dispatch via Formspree API
+                fetch('https://formspree.io/f/bharathi1990bharathi1990@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(contactData)
+                }).catch(err => console.log('Email dispatch notification:', err));
+
+                // 2. Open WhatsApp Direct Message to 9030284431
+                const waMessage = `📩 *NEW CONTACT INQUIRY - Sri Sai Vidyalaya High School*\n` +
+                    `----------------------------------\n` +
+                    `👤 *Name:* ${name}\n` +
+                    `📧 *Email:* ${email}\n` +
+                    `📞 *Mobile:* ${mobile}\n` +
+                    `💬 *Message:* ${message}`;
+
+                const waUrl = `https://wa.me/919030284431?text=${encodeURIComponent(waMessage)}`;
+
+                // 3. Dynamic mailto link
+                const mailSubject = `New Contact Inquiry from ${name}`;
+                const mailBody = `New Inquiry - Sri Sai Vidyalaya High School\n\n` +
+                    `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage:\n${message}\n`;
+                const mailUrl = `mailto:bharathi1990bharathi1990@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+
+                const contactWaBtn = document.getElementById('contactWaBtn');
+                const contactMailBtn = document.getElementById('contactMailBtn');
+                if (contactWaBtn) contactWaBtn.href = waUrl;
+                if (contactMailBtn) contactMailBtn.href = mailUrl;
+
+                // Open WhatsApp & Mailto
+                window.open(waUrl, '_blank');
+                window.open(mailUrl, '_self');
+
+                // 4. Show Success Alert Modal
+                if (contactSuccessAlert) {
+                    contactSuccessAlert.removeAttribute('hidden');
+                    contactSuccessAlert.style.display = 'block';
+                    contactForm.style.opacity = '0.2';
+                    contactForm.style.pointerEvents = 'none';
+                }
             }
         });
 
