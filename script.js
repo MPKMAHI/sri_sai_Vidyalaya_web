@@ -739,12 +739,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     email: email,
                     mobile: mobile,
                     classApplying: classApplying,
-                    recipientEmail: "bharathi1990bharathi1990@gmail.com",
+                    recipientEmail: "mahidhar.contact@gmail.com",
                     recipientMobile: "9030284431"
                 };
 
                 // 1. Asynchronous Email Dispatch via Formspree API
-                fetch('https://formspree.io/f/bharathi1990bharathi1990@gmail.com', {
+                fetch('https://formspree.io/f/mahidhar.contact@gmail.com', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(formData)
@@ -767,16 +767,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mailBody = `New Admission Application - Sri Sai Vidyalaya High School\n\n` +
                     `Student Name: ${studentName}\nDate of Birth: ${dob}\nParent Name: ${parentName}\n` +
                     `Email: ${email}\nMobile: ${mobile}\nClass Applying For: ${classApplying}\n`;
-                const mailUrl = `mailto:bharathi1990bharathi1990@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+                const mailUrl = `mailto:mahidhar.contact@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
                 const admissionWaBtn = document.getElementById('admissionWaBtn');
                 const admissionMailBtn = document.getElementById('admissionMailBtn');
                 if (admissionWaBtn) admissionWaBtn.href = waUrl;
-                if (admissionMailBtn) admissionMailBtn.href = mailUrl;
+                if (admissionMailBtn) {
+                    admissionMailBtn.href = mailUrl;
+                    admissionMailBtn.onclick = (e) => {
+                        e.preventDefault();
+                        window.open(mailUrl, '_blank');
+                    };
+                }
 
                 // Open WhatsApp & Mailto
                 window.open(waUrl, '_blank');
-                window.open(mailUrl, '_self');
+                window.open(mailUrl, '_blank');
 
                 // 4. Show Success Alert Modal
                 if (successAlert) {
@@ -857,12 +863,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     email: email,
                     mobile: mobile,
                     message: message,
-                    recipientEmail: "bharathi1990bharathi1990@gmail.com",
+                    recipientEmail: "mahidhar.contact@gmail.com",
                     recipientMobile: "9030284431"
                 };
 
                 // 1. Asynchronous Email Dispatch via Formspree API
-                fetch('https://formspree.io/f/bharathi1990bharathi1990@gmail.com', {
+                fetch('https://formspree.io/f/mahidhar.contact@gmail.com', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(contactData)
@@ -882,16 +888,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mailSubject = `New Contact Inquiry from ${name}`;
                 const mailBody = `New Inquiry - Sri Sai Vidyalaya High School\n\n` +
                     `Name: ${name}\nEmail: ${email}\nMobile: ${mobile}\nMessage:\n${message}\n`;
-                const mailUrl = `mailto:bharathi1990bharathi1990@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+                const mailUrl = `mailto:mahidhar.contact@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
                 const contactWaBtn = document.getElementById('contactWaBtn');
                 const contactMailBtn = document.getElementById('contactMailBtn');
                 if (contactWaBtn) contactWaBtn.href = waUrl;
-                if (contactMailBtn) contactMailBtn.href = mailUrl;
+                if (contactMailBtn) {
+                    contactMailBtn.href = mailUrl;
+                    contactMailBtn.onclick = (e) => {
+                        e.preventDefault();
+                        window.open(mailUrl, '_blank');
+                    };
+                }
 
                 // Open WhatsApp & Mailto
                 window.open(waUrl, '_blank');
-                window.open(mailUrl, '_self');
+                window.open(mailUrl, '_blank');
 
                 // 4. Show Success Alert Modal
                 if (contactSuccessAlert) {
