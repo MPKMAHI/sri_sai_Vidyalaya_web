@@ -711,33 +711,33 @@ body.dark-theme .theme-toggle .moon-icon {
     color: var(--text-secondary);
 }
 
-.principal-card {
+.correspondent-card {
     padding: 0;
     overflow: hidden;
 }
 
-.principal-img-wrapper {
+.correspondent-img-wrapper {
     height: 300px;
     overflow: hidden;
 }
 
-.principal-img {
+.correspondent-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
 }
 
-.principal-card:hover .principal-img {
+.correspondent-card:hover .correspondent-img {
     transform: scale(1.05);
 }
 
-.principal-info {
+.correspondent-info {
     padding: 30px;
     background: var(--bg-surface-opaque);
 }
 
-.principal-info blockquote {
+.correspondent-info blockquote {
     font-style: italic;
     font-size: 15px;
     color: var(--text-secondary);
@@ -745,14 +745,14 @@ body.dark-theme .theme-toggle .moon-icon {
     position: relative;
 }
 
-.principal-info h4 {
+.correspondent-info h4 {
     font-family: var(--font-heading);
     font-size: 18px;
     font-weight: 700;
     color: var(--primary);
 }
 
-.principal-info .designation {
+.correspondent-info .designation {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-muted);
@@ -2447,6 +2447,201 @@ body.dark-theme .map-placeholder {
 
     .section-title {
         font-size: 42px;
+    }
+}
+
+/* 19. Awards Section */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.award-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.award-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.award-image-wrapper {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.award-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.award-card:hover .award-img {
+    transform: scale(1.06);
+}
+
+.award-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: #ffffff;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+}
+
+.award-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.award-content h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.award-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.award-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.award-tag {
+    font-size: 11px;
+    font-weight: 600;
+    background-color: rgba(79, 70, 229, 0.08);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 30px;
+}
+
+body.dark-theme .award-tag {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: var(--secondary-light);
+}
+
+/* 20. Image Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(9, 13, 22, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+}
+
+.lightbox-content-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-modal.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-caption {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    color: #f1f5f9;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 35px;
+    color: #f1f5f9;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 2010;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-height: 70vh;
+    }
+    .lightbox-close {
+        top: 15px;
+        right: 25px;
+        font-size: 35px;
+    }
+    .lightbox-caption {
+        font-size: 13px;
+        padding: 10px 10px;
     }
 }
 

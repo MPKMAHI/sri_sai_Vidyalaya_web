@@ -3,31 +3,28 @@
    Interactivity, Animations, Countdowns, and Validations
    ========================================================================== */
 
+// Fail-safe Loader Dismiss function
+const dismissLoader = () => {
+    const loader = document.getElementById('loadingScreen');
+    if (loader) {
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'none';
+        loader.style.visibility = 'hidden';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 650);
+    }
+};
+
+// Check if ready state is already interactive or complete
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    dismissLoader();
+} else {
+    window.addEventListener('load', dismissLoader);
+    document.addEventListener('DOMContentLoaded', dismissLoader);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-
-    // ==========================================
-    // 1. Loading Screen dismiss
-    // ==========================================
-    window.addEventListener('load', () => {
-        const loader = document.getElementById('loadingScreen');
-        if (loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 600);
-        }
-    });
-
-    // Fallback if window load doesn't trigger quickly
-    setTimeout(() => {
-        const loader = document.getElementById('loadingScreen');
-        if (loader && loader.style.display !== 'none') {
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 600);
-        }
-    }, 2000);
 
     // ==========================================
     // 3. Theme Switcher (Dark/Light mode)
@@ -990,4 +987,53 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // ==========================================
+    // 20. Image Lightbox Modal Handler
+    // ==========================================
+    const awardsLightbox = document.getElementById('imageLightbox');
+    const awardsLightboxImg = document.getElementById('lightboxImg');
+    const awardsLightboxCaption = document.getElementById('lightboxCaption');
+    const awardsLightboxClose = document.getElementById('lightboxClose');
+
+    if (awardsLightbox && awardsLightboxImg && awardsLightboxClose) {
+        // Select all images in awards and gallery sections
+        const triggers = document.querySelectorAll('.award-img, .gallery-item img');
+        
+        triggers.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                awardsLightbox.style.display = 'flex';
+                // Force layout reflow before adding transition active class
+                awardsLightbox.offsetHeight;
+                awardsLightbox.classList.add('active');
+                
+                awardsLightboxImg.src = img.src;
+                awardsLightboxCaption.textContent = img.alt || '';
+            });
+        });
+
+        const closeAwardsLightbox = () => {
+            awardsLightbox.classList.remove('active');
+            setTimeout(() => {
+                awardsLightbox.style.display = 'none';
+            }, 300);
+        };
+
+        awardsLightboxClose.addEventListener('click', closeAwardsLightbox);
+        
+        // Close on clicking backdrop
+        awardsLightbox.addEventListener('click', (e) => {
+            if (e.target === awardsLightbox || e.target.classList.contains('lightbox-content-wrapper')) {
+                closeAwardsLightbox();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && awardsLightbox.classList.contains('active')) {
+                closeAwardsLightbox();
+            }
+        });
+    }
 });

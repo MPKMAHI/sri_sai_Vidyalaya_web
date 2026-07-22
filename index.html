@@ -50,6 +50,7 @@
                 <a href="#facilities" class="nav-link">Facilities</a>
                 <a href="#faculty" class="nav-link">Faculty</a>
                 <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#awards" class="nav-link">Awards</a>
                 <a href="#notice-board" class="nav-link">Notices</a>
                 <a href="#events" class="nav-link">Events</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
@@ -147,17 +148,17 @@
                         </div>
                     </div>
                     
-                    <div class="about-principal reveal-right">
-                        <div class="principal-card glass-card">
-                            <div class="principal-img-wrapper">
-                                <img src="./images/principal.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80';" alt="Principal Dr. Victoria Sterling" class="principal-img">
+                    <div class="about-correspondent reveal-right">
+                        <div class="correspondent-card glass-card">
+                            <div class="correspondent-img-wrapper">
+                                <img src="./images/principal.jpg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80';" alt="Correspondent" class="correspondent-img">
                             </div>
-                            <div class="principal-info">
+                            <div class="correspondent-info">
                                 <blockquote>
                                     "Education is not the learning of facts, but the training of the mind to think. At SSVHS, we inspire minds to reach their full potential."
                                 </blockquote>
-                                <h4>Dr. Victoria Sterling</h4>
-                                <span class="designation">Principal, SSVHS</span>
+                                <h4>Correspondent</h4>
+                                <span class="designation">Correspondent, SSVHS</span>
                             </div>
                         </div>
                     </div>
@@ -513,6 +514,33 @@
             </div>
         </section>
 
+        <!-- Awards & Achievements Section -->
+        <section class="awards section-padding" id="awards">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Our Achievements</span>
+                    <h2 class="section-title">Awards & Student Honors</h2>
+                </div>
+
+                <div class="awards-grid">
+                    <div class="award-card glass-card reveal-slide-up">
+                        <div class="award-image-wrapper">
+                            <img src="./images/award1.jpeg" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80';" alt="State Government Academic Award" class="award-img">
+                            <div class="award-badge">State Honors</div>
+                        </div>
+                        <div class="award-content">
+                            <h3>State Government Academic Excellence Award</h3>
+                            <p class="award-desc">3 students have been awarded with Rs 20000, certificate, and medal by the state govt through Dist collector sri chamakura Sreedhar for achieving 597 by two students 586 by one student.</p>
+                            <div class="award-meta">
+                                <span class="award-tag">🎓 Cash Prize: Rs 20,000</span>
+                                <span class="award-tag">🏅 Medals & Certificates</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Notice Board Section -->
         <section class="notice-board section-padding section-bg" id="notice-board">
             <div class="container">
@@ -854,6 +882,7 @@
                 <ul class="footer-links">
                     <li><a href="#faculty">Faculty Details</a></li>
                     <li><a href="#gallery">Photo Gallery</a></li>
+                    <li><a href="#awards">School Awards</a></li>
                     <li><a href="#notice-board">Latest Circulars</a></li>
                     <li><a href="#faq">FAQ Section</a></li>
                 </ul>
@@ -889,6 +918,15 @@
             </div>
         </div>
     </footer>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="lightbox-modal" aria-hidden="true" role="dialog">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <img class="lightbox-content" id="lightboxImg" alt="Enlarged view">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
